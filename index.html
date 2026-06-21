@@ -1,157 +1,464 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html class="light" lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HZ Servis – Autoservis vozidel</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>HZ Servis | Prvotřídní servis pro váš vůz</title>
     <meta name="description" content="HZ Servis – profesionální autoservis vozidel. Opravy, údržba, diagnostika a pneuservis.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#d8dadd",
+                        "text-muted": "#5A6475",
+                        "surface-container-lowest": "#ffffff",
+                        "border": "#DDE2EA",
+                        "on-primary-container": "#fcfcff",
+                        "on-primary": "#ffffff",
+                        "secondary": "#5d5e62",
+                        "tertiary": "#006482",
+                        "surface-variant": "#e0e3e6",
+                        "background": "#f7f9fc",
+                        "outline": "#6f7881",
+                        "inverse-surface": "#2d3133",
+                        "secondary-container": "#dfdfe3",
+                        "inverse-primary": "#8dcdff",
+                        "surface": "#FFFFFF",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#007ea4",
+                        "on-secondary-container": "#616366",
+                        "surface-container-high": "#e6e8eb",
+                        "primary": "#2296D6",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f4",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-tertiary": "#ffffff",
+                        "accent-dark": "#0D6EA8",
+                        "primary-container": "#007bb4",
+                        "surface-container": "#eceef1",
+                        "surface-bright": "#f7f9fc",
+                        "outline-variant": "#bec7d1",
+                        "surface-container-low": "#f2f4f7",
+                        "surface-tint": "#006493",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#3f4850",
+                        "on-surface": "#191c1e"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        "container-max": "1200px",
+                        "section-padding": "80px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "margin-x": "40px"
+                    },
+                    fontFamily: {
+                        "headline": ["Montserrat"],
+                        "body": ["Inter"],
+                        "button": ["Montserrat"]
+                    },
+                    fontSize: {
+                        "headline-xl-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-lg": ["16px", { lineHeight: "1.7", fontWeight: "400" }],
+                        "body-md": ["15px", { lineHeight: "1.7", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "headline-md": ["28px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "headline-lg": ["36px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "headline-sm": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "label-md": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+                        "button": ["14px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "headline-xl": ["52px", { lineHeight: "1.1", letterSpacing: "-0.01em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-card {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+        }
+        .transition-standard {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(26, 28, 31, 0.95) 0%, rgba(26, 28, 31, 0.7) 100%);
+        }
+        .btn-clipped {
+            clip-path: polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px);
+        }
+        .link-clipped {
+            clip-path: polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px);
+        }
+    </style>
 </head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <a href="#" class="logo"><img src="logo.png" alt="HZ Servis" class="logo-img"></a>
-            <button class="nav-toggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#o-nas">O nás</a></li>
-                <li><a href="#sluzby">Služby</a></li>
-                <li><a href="#reference">Reference</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-white">
 
-    <section class="hero">
-        <div class="hero-content">
-            <p class="hero-eyebrow">Opravy motorových vozidel</p>
-            <h1>Profesionální autoservis<br>na který se můžete spolehnout</h1>
-            <p>Kvalitní opravy a údržba vozidel všech značek. Rychle, spolehlivě a za férové ceny.</p>
-            <a href="#kontakt" class="btn">Objednat se</a>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-bright shadow-md">
+    <nav class="flex justify-between items-center px-margin-x py-4 max-w-container-max mx-auto">
+        <div class="flex items-center">
+            <a href="#">
+                <img alt="HZ Servis" class="w-auto object-contain h-32" src="logo.png">
+            </a>
+        </div>
+        <!-- Mobile toggle -->
+        <button class="md:hidden flex flex-col gap-[5px] p-2" id="nav-toggle">
+            <span class="w-6 h-0.5 bg-on-surface transition-all"></span>
+            <span class="w-6 h-0.5 bg-on-surface transition-all"></span>
+            <span class="w-6 h-0.5 bg-on-surface transition-all"></span>
+        </button>
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-4">
+            <a class="bg-primary text-white px-6 py-2 font-button text-[13px] uppercase transition-standard hover:shadow-lg hover:shadow-primary/20 active:scale-95 btn-clipped" href="#about">O nás</a>
+            <a class="bg-primary text-white px-6 py-2 font-button text-[13px] uppercase transition-standard hover:shadow-lg hover:shadow-primary/20 active:scale-95 btn-clipped" href="#services">Služby</a>
+            <a class="bg-primary text-white px-6 py-2 font-button text-[13px] uppercase transition-standard hover:shadow-lg hover:shadow-primary/20 active:scale-95 btn-clipped" href="#testimonials">Reference</a>
+            <a class="bg-primary text-white px-6 py-2 font-button text-[13px] uppercase transition-standard hover:shadow-lg hover:shadow-primary/20 active:scale-95 btn-clipped" href="#contact">Kontakt</a>
+        </div>
+        <!-- Mobile Nav -->
+        <div class="hidden md:hidden absolute top-full left-0 right-0 bg-surface-bright shadow-md flex-col p-6 gap-3" id="mobile-nav">
+            <a class="bg-primary text-white px-6 py-3 font-button text-[13px] uppercase text-center btn-clipped" href="#about">O nás</a>
+            <a class="bg-primary text-white px-6 py-3 font-button text-[13px] uppercase text-center btn-clipped" href="#services">Služby</a>
+            <a class="bg-primary text-white px-6 py-3 font-button text-[13px] uppercase text-center btn-clipped" href="#testimonials">Reference</a>
+            <a class="bg-primary text-white px-6 py-3 font-button text-[13px] uppercase text-center btn-clipped" href="#contact">Kontakt</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 hero-gradient z-10"></div>
+        </div>
+        <div class="relative z-20 max-w-container-max mx-auto px-margin-x w-full">
+            <div class="max-w-2xl">
+                <span class="inline-block py-1 px-3 bg-primary/10 border border-primary/20 text-primary text-[12px] font-bold uppercase tracking-widest mb-6 rounded-sm">
+                    Profesionální Auto Servis
+                </span>
+                <h1 class="font-headline text-headline-xl text-white mb-6">
+                    Prvotřídní servis pro váš vůz
+                </h1>
+                <p class="font-body text-body-lg text-surface-variant mb-10 opacity-90">
+                    Profesionální diagnostika, opravy a údržba s důrazem na kvalitu a preciznost. Váš automobil si zaslouží péči odborníků.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a class="bg-primary text-white px-8 py-4 font-button text-button uppercase text-center transition-standard hover:shadow-lg hover:shadow-primary/20 active:scale-95 btn-clipped" href="#services">
+                        Naše služby
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="o-nas" class="section">
-        <div class="container">
-            <h2>O nás</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>HZ Servis je autoservis s dlouholetou zkušeností v oblasti oprav a údržby osobních i užitkových vozidel. Náš tým zkušených mechaniků se postará o vaše auto s maximální péčí.</p>
-                    <p>Používáme moderní diagnostické vybavení a kvalitní náhradní díly, abychom zajistili spolehlivost každé opravy.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <strong>10+</strong>
-                            <span>let zkušeností</span>
-                        </div>
-                        <div class="stat">
-                            <strong>2000+</strong>
-                            <span>spokojených zákazníků</span>
-                        </div>
-                        <div class="stat">
-                            <strong>100%</strong>
-                            <span>nasazení</span>
-                        </div>
+    <!-- Services Section -->
+    <section class="py-section-padding bg-background" id="services">
+        <div class="max-w-container-max mx-auto px-margin-x">
+            <div class="text-center mb-16">
+                <h2 class="font-headline text-headline-lg text-on-background mb-4">Naše specializované služby</h2>
+                <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-xl mx-auto text-text-muted">Kompletní technické zázemí pro všechny typy osobních i užitkových vozů s využitím nejmodernější diagnostické techniky.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                <div class="bg-surface p-8 shadow-card border-[0.5px] border-outline-variant group hover:-translate-y-1 transition-standard">
+                    <div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white" style="font-size: 32px;">settings_suggest</span>
+                    </div>
+                    <h3 class="font-headline text-headline-sm mb-3">Motor a převodovka</h3>
+                    <p class="text-text-muted mb-6">Komplexní servis pohonných jednotek, výměny náplní a generální opravy převodových ústrojí.</p>
+                    <a class="inline-flex items-center text-primary font-body font-bold uppercase text-label-md gap-2 hover:gap-3 transition-all px-4 py-2 hover:bg-primary/5 link-clipped" href="#">
+                        Více informací <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="bg-surface p-8 shadow-card border-[0.5px] border-outline-variant group hover:-translate-y-1 transition-standard">
+                    <div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white" style="font-size: 32px;">terminal</span>
+                    </div>
+                    <h3 class="font-headline text-headline-sm mb-3">Diagnostika</h3>
+                    <p class="text-text-muted mb-6">Přesná identifikace závad pomocí moderních diagnostických systémů pro všechny evropské i asijské vozy.</p>
+                    <a class="inline-flex items-center text-primary font-body font-bold uppercase text-label-md gap-2 hover:gap-3 transition-all px-4 py-2 hover:bg-primary/5 link-clipped" href="#">
+                        Více informací <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="bg-surface p-8 shadow-card border-[0.5px] border-outline-variant group hover:-translate-y-1 transition-standard">
+                    <div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white" style="font-size: 32px;">car_repair</span>
+                    </div>
+                    <h3 class="font-headline text-headline-sm mb-3">Brzdový systém</h3>
+                    <p class="text-text-muted mb-6">Pravidelná kontrola a servis brzdových komponent pro vaši maximální bezpečnost na cestách.</p>
+                    <a class="inline-flex items-center text-primary font-body font-bold uppercase text-label-md gap-2 hover:gap-3 transition-all px-4 py-2 hover:bg-primary/5 link-clipped" href="#">
+                        Více informací <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="bg-surface p-8 shadow-card border-[0.5px] border-outline-variant group hover:-translate-y-1 transition-standard">
+                    <div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white" style="font-size: 32px;">ac_unit</span>
+                    </div>
+                    <h3 class="font-headline text-headline-sm mb-3">Klimatizace</h3>
+                    <p class="text-text-muted mb-6">Plnění, dezinfekce a opravy klimatizačních okruhů oběma typy chladiv pro váš komfort.</p>
+                    <a class="inline-flex items-center text-primary font-body font-bold uppercase text-label-md gap-2 hover:gap-3 transition-all px-4 py-2 hover:bg-primary/5 link-clipped" href="#">
+                        Více informací <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="bg-surface p-8 shadow-card border-[0.5px] border-outline-variant group hover:-translate-y-1 transition-standard">
+                    <div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white" style="font-size: 32px;">handyman</span>
+                    </div>
+                    <h3 class="font-headline text-headline-sm mb-3">Karosářské práce</h3>
+                    <p class="text-text-muted mb-6">Opravy po nehodách, výměny dílů a precizní lakování s důrazem na tovární vzhled.</p>
+                    <a class="inline-flex items-center text-primary font-body font-bold uppercase text-label-md gap-2 hover:gap-3 transition-all px-4 py-2 hover:bg-primary/5 link-clipped" href="#">
+                        Více informací <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="bg-surface p-8 shadow-card border-[0.5px] border-outline-variant group hover:-translate-y-1 transition-standard">
+                    <div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white" style="font-size: 32px;">tire_repair</span>
+                    </div>
+                    <h3 class="font-headline text-headline-sm mb-3">Pneuservis</h3>
+                    <p class="text-text-muted mb-6">Sezónní přezouvání, vyvažování kol a prodej pneumatik renomovaných značek.</p>
+                    <a class="inline-flex items-center text-primary font-body font-bold uppercase text-label-md gap-2 hover:gap-3 transition-all px-4 py-2 hover:bg-primary/5 link-clipped" href="#">
+                        Více informací <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-section-padding bg-surface" id="about">
+        <div class="max-w-container-max mx-auto px-margin-x">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div class="absolute -top-4 -left-4 w-32 h-32 bg-primary/10 -z-10"></div>
+                    <div class="w-full aspect-square bg-surface-container flex items-center justify-center shadow-xl">
+                        <img alt="HZ Servis" class="w-2/3 object-contain" src="logo.png">
+                    </div>
+                    <div class="absolute bottom-6 right-6 bg-primary text-white p-6 shadow-lg max-w-xs btn-clipped">
+                        <div class="font-headline text-headline-sm mb-1">15+ Let</div>
+                        <p class="text-label-sm">Zkušeností v oboru automobilové techniky.</p>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <span class="text-primary font-body text-label-md font-bold uppercase tracking-widest block mb-4">Představení firmy</span>
+                    <h2 class="font-headline text-headline-lg mb-8">O nás – Tým profesionálů</h2>
+                    <p class="text-body-lg text-text-muted mb-6 leading-relaxed">
+                        HZ Servis vznikl z vášně pro automobily a precizní techniku. Naším cílem je poskytovat služby na úrovni autorizovaných servisů, ale s osobním přístupem a férovou cenovou politikou.
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-4 text-on-surface font-body text-label-md">
+                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Moderní vybavení a nejnovější diagnostika
+                        </li>
+                        <li class="flex items-center gap-4 text-on-surface font-body text-label-md">
+                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Certifikovaný tým mechaniků
+                        </li>
+                        <li class="flex items-center gap-4 text-on-surface font-body text-label-md">
+                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Originální náhradní díly a záruka na práci
+                        </li>
+                    </ul>
+                    <a class="bg-primary text-white px-8 py-4 font-button text-button uppercase transition-standard hover:shadow-lg hover:shadow-primary/20 btn-clipped inline-block" href="#contact">
+                        Kontaktovat nás
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-section-padding bg-surface-container-low" id="testimonials">
+        <div class="max-w-container-max mx-auto px-margin-x">
+            <div class="text-center mb-16">
+                <h2 class="font-headline text-headline-lg mb-4">Reference – Co o nás říkají klienti</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-surface p-10 shadow-card relative">
+                    <span class="material-symbols-outlined text-primary/20 absolute top-8 right-8 text-6xl">format_quote</span>
+                    <div class="flex text-primary mb-4">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-body-md italic text-on-surface mb-8">"Nejlepší servis v okolí. Oceňuji především férové jednání a rychlost opravy mého BMW. Vždy mě předem informovali o ceně."</p>
+                    <div>
+                        <div class="font-headline text-[16px] font-semibold text-on-surface mb-1">Marek Novák</div>
+                        <div class="text-label-sm text-text-muted">Pravidelný zákazník</div>
+                    </div>
+                </div>
+                <div class="bg-surface p-10 shadow-card relative">
+                    <span class="material-symbols-outlined text-primary/20 absolute top-8 right-8 text-6xl">format_quote</span>
+                    <div class="flex text-primary mb-4">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-body-md italic text-on-surface mb-8">"Hledal jsem servis, který umí diagnostikovat složitou závadu na elektrice. Pánové v HZ Servisu to zvládli za jedno dopoledne."</p>
+                    <div>
+                        <div class="font-headline text-[16px] font-semibold text-on-surface mb-1">Lucie Svobodová</div>
+                        <div class="text-label-sm text-text-muted">Audi A4 majitelka</div>
+                    </div>
+                </div>
+                <div class="bg-surface p-10 shadow-card relative">
+                    <span class="material-symbols-outlined text-primary/20 absolute top-8 right-8 text-6xl">format_quote</span>
+                    <div class="flex text-primary mb-4">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-body-md italic text-on-surface mb-8">"Profesionální přístup od prvního zavolání. Oceňuji čisté prostředí dílny a možnost zapůjčení náhradního vozu."</p>
+                    <div>
+                        <div class="font-headline text-[16px] font-semibold text-on-surface mb-1">Jan Procházka</div>
+                        <div class="text-label-sm text-text-muted">Firemní flotila</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="sluzby" class="section section-dark">
-        <div class="container">
-            <h2>Služby</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Mechanické opravy</h3>
-                    <p>Opravy motorů, převodovek, brzd, podvozků a dalších mechanických součástí.</p>
+    <!-- Contact -->
+    <section class="py-section-padding bg-background" id="contact">
+        <div class="max-w-container-max mx-auto px-margin-x">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                <div class="bg-inverse-surface p-10 text-white flex flex-col justify-center">
+                    <h2 class="font-headline text-headline-lg mb-10">Kontaktujte nás</h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">call</span>
+                            <div>
+                                <div class="font-body text-label-md text-surface-variant mb-1">Telefon</div>
+                                <div class="font-headline text-headline-sm">+420 123 456 789</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                            <div>
+                                <div class="font-body text-label-md text-surface-variant mb-1">Adresa</div>
+                                <div class="font-headline text-headline-sm">Ulice 123, Město, PSČ</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">mail</span>
+                            <div>
+                                <div class="font-body text-label-md text-surface-variant mb-1">E-mail</div>
+                                <div class="font-headline text-headline-sm">info@hzservis.cz</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">schedule</span>
+                            <div>
+                                <div class="font-body text-label-md text-surface-variant mb-1">Otevírací doba</div>
+                                <div class="font-headline text-headline-sm">Po–Pá: 8:00 – 17:00</div>
+                                <div class="font-headline text-[16px] font-medium text-surface-variant mt-1">So: 8:00 – 12:00</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🖥️</div>
-                    <h3>Diagnostika</h3>
-                    <p>Kompletní počítačová diagnostika závad pomocí moderního vybavení.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🛞</div>
-                    <h3>Pneuservis</h3>
-                    <p>Přezouvání, vyvažování a uskladnění pneumatik. Prodej nových i ojetých pneu.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🛢️</div>
-                    <h3>Servisní prohlídky</h3>
-                    <p>Pravidelné servisní prohlídky a výměny provozních kapalin dle předpisu výrobce.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">❄️</div>
-                    <h3>Klimatizace</h3>
-                    <p>Plnění, čištění a opravy autoklimatizací. Dezinfekce interiéru.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Elektroinstalace</h3>
-                    <p>Opravy elektrických systémů, výměna baterií, opravy startérů a alternátorů.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="reference" class="section">
-        <div class="container">
-            <h2>Reference</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p>„Skvělý servis, rychlá oprava a férová cena. Určitě doporučuji!"</p>
-                    <strong>– Martin K.</strong>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p>„Profesionální přístup a kvalitní práce. Můj vůz jezdí jako nový."</p>
-                    <strong>– Jana P.</strong>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p>„Konečně servis, kterému můžu věřit. Vždy vysvětlí, co je potřeba opravit."</p>
-                    <strong>– Petr S.</strong>
+                <div class="min-h-[400px] w-full bg-surface-dim relative overflow-hidden grayscale contrast-125">
+                    <div class="absolute inset-0 bg-surface-container flex items-center justify-center">
+                        <div class="text-center text-text-muted">
+                            <span class="material-symbols-outlined text-6xl mb-4 block text-primary/30">map</span>
+                            <p class="font-body text-label-md">Mapa bude doplněna</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+</main>
 
-    <section id="kontakt" class="section section-dark">
-        <div class="container">
-            <h2>Kontakt</h2>
-            <div class="contact-center">
-                <div class="contact-item">
-                    <strong>📍 Adresa</strong>
-                    <p>Ulice 123, Město, PSČ</p>
-                </div>
-                <div class="contact-item">
-                    <strong>📞 Telefon</strong>
-                    <p><a href="tel:+420123456789">+420 123 456 789</a></p>
-                </div>
-                <div class="contact-item">
-                    <strong>✉️ E-mail</strong>
-                    <p><a href="mailto:info@hzservis.cz">info@hzservis.cz</a></p>
-                </div>
-                <div class="contact-item">
-                    <strong>🕐 Otevírací doba</strong>
-                    <p>Po–Pá: 8:00 – 17:00<br>So: 8:00 – 12:00<br>Ne: Zavřeno</p>
-                </div>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-surface py-section-padding border-t border-outline-variant">
+    <div class="max-w-container-max mx-auto px-margin-x grid grid-cols-1 md:grid-cols-4 gap-gutter">
+        <div class="col-span-1 md:col-span-1">
+            <div class="mb-6">
+                <img alt="HZ Servis" class="h-14 w-auto object-contain brightness-0 invert" src="logo.png">
             </div>
+            <p class="font-body text-body-md text-surface-variant opacity-70 mb-6">Prvotřídní péče o váš automobil s využitím nejmodernějších technologií.</p>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 HZ Servis. Všechna práva vyhrazena.</p>
+        <div>
+            <h4 class="font-body text-label-md font-bold uppercase text-primary mb-6 tracking-widest">Služby</h4>
+            <ul class="space-y-4 font-body text-body-md text-surface-variant">
+                <li><a class="hover:text-surface transition-colors" href="#services">Diagnostika</a></li>
+                <li><a class="hover:text-surface transition-colors" href="#services">Servis motorů</a></li>
+                <li><a class="hover:text-surface transition-colors" href="#services">Pneuservis</a></li>
+                <li><a class="hover:text-surface transition-colors" href="#services">Opravy brzd</a></li>
+            </ul>
         </div>
-    </footer>
+        <div>
+            <h4 class="font-body text-label-md font-bold uppercase text-primary mb-6 tracking-widest">O nás</h4>
+            <ul class="space-y-4 font-body text-body-md text-surface-variant">
+                <li><a class="hover:text-surface transition-colors" href="#about">Náš tým</a></li>
+                <li><a class="hover:text-surface transition-colors" href="#about">Galerie</a></li>
+                <li><a class="hover:text-surface transition-colors" href="#about">Vybavení</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-body text-label-md font-bold uppercase text-primary mb-6 tracking-widest">Kontakt</h4>
+            <ul class="space-y-4 font-body text-body-md text-surface-variant">
+                <li><a class="hover:text-surface transition-colors" href="#contact">Kontakt</a></li>
+                <li><a class="hover:text-surface transition-colors" href="#">Časté dotazy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-x mt-section-padding pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-surface-variant text-label-sm">
+        <span>&copy; 2026 HZ Servis. Všechna práva vyhrazena.</span>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
+<script>
+    // Mobile nav toggle
+    document.getElementById('nav-toggle').addEventListener('click', function () {
+        var nav = document.getElementById('mobile-nav');
+        nav.classList.toggle('hidden');
+        nav.classList.toggle('flex');
+    });
+
+    document.querySelectorAll('#mobile-nav a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            var nav = document.getElementById('mobile-nav');
+            nav.classList.add('hidden');
+            nav.classList.remove('flex');
+        });
+    });
+
+    // Scroll reveal
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(function (section) {
+        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+        observer.observe(section);
+    });
+</script>
+
 </body>
 </html>
